@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         float moveInputX = Input.GetAxis("Horizontal");
-        rb.linearVelocityX = moveInputX * speed * Time.deltaTime;
+        rb.linearVelocityX = moveInputX * speed;
 
         if (moveInputX <0)
         {
@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && canJumpFor > 0)
         {
             canJumpFor--;
-            rb.linearVelocityY = jumpForce * Time.deltaTime;
+            rb.linearVelocityY = jumpForce;
         }
 
         if (rb.linearVelocityY > 0)
@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
