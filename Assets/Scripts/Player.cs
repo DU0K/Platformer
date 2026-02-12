@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
         float moveInputX = Input.GetAxis("Horizontal");
         rb.linearVelocityX = moveInputX * speed;
 
-        if (moveInputX <0)
+        if (moveInputX < 0)
         {
             spriteRenderer.flipX = true;
         }

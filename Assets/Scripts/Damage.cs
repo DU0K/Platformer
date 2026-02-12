@@ -33,7 +33,6 @@ public class Damage : MonoBehaviour
             capsuleCollider2d.enabled = false;
             StartCoroutine(RestartGameInSeconds(1f));
         }
-        uiManager.UpdateHP(HP);
     }
 
     private IEnumerator RestartGameInSeconds(float Time)
@@ -48,6 +47,7 @@ public class Damage : MonoBehaviour
         if (collision.gameObject.CompareTag("Spike"))
         {
             HP -= SpikeDamage;
+            uiManager.UpdateHP(HP);
             StartCoroutine(FlashDamage(0.1f));
             checkForHP();
         }
