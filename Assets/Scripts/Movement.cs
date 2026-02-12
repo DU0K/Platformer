@@ -1,11 +1,17 @@
 using UnityEditor.Tilemaps;
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
-
-public class Player : MonoBehaviour
+using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
+public class Movement : MonoBehaviour
 {
-    public float speed = 1000f;
-    public float jumpForce = 300f;
+    public float speed = 10f;
+    public float jumpForce = 3f;
     public int canJumpForTimes = 2;
+    public int speedAndForceMultiplier = 100;
+
+    [SerializeField] private AudioSource AudioSourceJump;
 
     private int canJumpFor;
     private bool isgrounded;
@@ -26,7 +32,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         float moveInputX = Input.GetAxis("Horizontal");
-        rb.linearVelocityX = moveInputX * speed;
+        rb.linearVelocityX = moveInputX * speed * speedAndForceMultiplier;
 
         if (moveInputX < 0)
         {
@@ -39,8 +45,9 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && canJumpFor > 0)
         {
+            StartCoroutine(WaitForSoundJump());
             canJumpFor--;
-            rb.linearVelocityY = jumpForce;
+            rb.linearVelocityY = jumpForce * speedAndForceMultiplier;
         }
 
         if (rb.linearVelocityY > 0)
@@ -55,6 +62,12 @@ public class Player : MonoBehaviour
         {
             animator.Play("Idle");
         }
+    }
+
+    private IEnumerator WaitForSoundJump()
+    {
+        AudioSourceJump.Play();
+        yield return new WaitForSeconds(AudioSourceJump.clip.length);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
