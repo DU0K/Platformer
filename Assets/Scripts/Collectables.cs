@@ -27,20 +27,29 @@ public class Collectables : MonoBehaviour
                 audioSource.Play();
                 Bronze = true;
                 gameObject.GetComponent<Renderer>().enabled = false;
+                StartCoroutine(WaitForSound());
             }
             else if (gameObject.name == "Silver")
             {
                 audioSource.Play();
                 Silver = true;
                 gameObject.GetComponent<Renderer>().enabled = false;
+                StartCoroutine(WaitForSound());
             }
             else if (gameObject.name == "Gold")
             {
                 audioSource.Play();
                 Gold = true;
                 gameObject.GetComponent<Renderer>().enabled = false;
+                StartCoroutine(WaitForSound());
             }
             uiManager.CheckForCollectables();
         }
+    }
+
+    IEnumerator WaitForSound()
+    {
+        yield return new WaitForSeconds(audioSource.clip.length);
+        audioSource.enabled = false;
     }
 }
