@@ -13,7 +13,6 @@ public class UiiManagerWinScene : MonoBehaviour
     [SerializeField] private Image goldImage;
     [SerializeField] private TMP_Text tmp;
     private AudioSource audioSource;
-    private Collectables collectables;
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -33,7 +32,7 @@ public class UiiManagerWinScene : MonoBehaviour
             goldImage.color = Color.white;
         }
 
-        tmp.text = SpeedrunTimer.timerMinutes + ":" + SpeedrunTimer.timerSeconds;
+        tmp.text = ($"{SpeedrunTimer.timerMinutes:00}:{SpeedrunTimer.timerSeconds}");
     }
 
     private void Update()

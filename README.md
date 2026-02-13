@@ -1,13 +1,22 @@
 # Platformer - Made by Sven Bras 
 
-## Release V1.1
+## Release V1.3
+
+### features added
+###### - Miliseconds on the SpeedrunTimer.
+###### - A Volume slider
+
+## Demo
+![gif](/ReadmeAssets/GameDemoV1-3.gif)
+
+## Release V1.2
 
 ### features added
 ###### - Speedrun timer.
 ###### - Being Able to kill enemies
 
 ## Demo
-![gif](/ReadmeAssets/GameDemoV1-3.gif)
+![gif](/ReadmeAssets/GameDemoV1-2.gif)
 
 ## Release V1.1
 
@@ -20,4 +29,4 @@
 ###### - Being Able to kill enemies
 
 ## Demo
-![gif](/ReadmeAssets/GameDemo.gif)
+![gif](/ReadmeAssets/GameDemoV1-1.gif)

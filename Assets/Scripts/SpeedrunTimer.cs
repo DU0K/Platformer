@@ -9,7 +9,8 @@ public class SpeedrunTimer : MonoBehaviour
     private TMP_Text tmp;
     private float timer;
 
-    public static float timerSeconds;
+
+    public static string timerSeconds;
     public static float timerMinutes;
 
     public static bool TimerLoop = false;
@@ -26,10 +27,10 @@ public class SpeedrunTimer : MonoBehaviour
         if (TimerLoop)
         {
             timer += Time.deltaTime;
-            timerSeconds = Mathf.RoundToInt(timer % 60);
-            timerMinutes = Mathf.RoundToInt(timerSeconds / 60);
-            tmp.text = timerMinutes + ":" + timerSeconds;
-            Debug.Log(timerSeconds);
+            timerMinutes = Mathf.FloorToInt(timer / 60);
+            timer -= timerMinutes * 60;
+            timerSeconds = timer.ToString("00.00").Replace(',', ':');
+            tmp.text = ($"{timerMinutes:00}:{timerSeconds}");
         }
     }
 }
