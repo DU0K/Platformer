@@ -46,3 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiManager
   HPDisplay: {fileID: 0}
   HPBar: {fileID: 0}
+  bronzeImage: {fileID: 0}
+  silverImage: {fileID: 0}
+  goldImage: {fileID: 0}

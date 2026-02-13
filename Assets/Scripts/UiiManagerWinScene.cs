@@ -44,6 +44,9 @@ public class UiiManagerWinScene : MonoBehaviour
     {
         audioSource.Play();
         yield return new WaitForSeconds(audioSource.clip.length);
+        Collectables.Bronze = false;
+        Collectables.Silver = false;
+        Collectables.Gold = false;
         SceneManager.LoadScene("LevelSelector");
     }
 }

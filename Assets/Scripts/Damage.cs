@@ -47,6 +47,9 @@ public class Damage : MonoBehaviour
     {
         if (HP <= 0)
         {
+            Collectables.Bronze = false;
+            Collectables.Silver = false;
+            Collectables.Gold = false;
             HP = 0;
             Collider.enabled = false;
             StartCoroutine(WaitForSoundDeath());

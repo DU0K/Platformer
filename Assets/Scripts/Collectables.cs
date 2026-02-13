@@ -1,40 +1,46 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class Collectables : MonoBehaviour
 {   public static bool Bronze = false;
     public static bool Silver = false;
     public static bool Gold = false;
 
+    private UiManager uiManager;
+
     private AudioSource audioSource;
     private void Start()
     {
+        uiManager = FindFirstObjectByType<UiManager>();
         audioSource = GetComponent<AudioSource>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            StartCoroutine(WaitForSound());
+            Debug.Log("Collided with " + gameObject.name);
             if (gameObject.name == "Bronze")
             {
+                audioSource.Play();
                 Bronze = true;
+                gameObject.GetComponent<Renderer>().enabled = false;
             }
             else if (gameObject.name == "Silver")
             {
+                audioSource.Play();
                 Silver = true;
+                gameObject.GetComponent<Renderer>().enabled = false;
             }
             else if (gameObject.name == "Gold")
             {
+                audioSource.Play();
                 Gold = true;
+                gameObject.GetComponent<Renderer>().enabled = false;
             }
+            uiManager.CheckForCollectables();
         }
-    }
-    private IEnumerator WaitForSound()
-    {
-        audioSource.Play();
-        yield return new WaitForSeconds(audioSource.clip.length);
-        gameObject.SetActive(false);
     }
 }
