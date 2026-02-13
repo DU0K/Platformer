@@ -16,8 +16,6 @@
 ###### - You can collect coins.
 ###### - Level selector with 4 levels.
 ###### - Moving platforms.
-###### - Speedrun timer.
-###### - Being Able to kill enemies
 
 ## Demo
 ![gif](/ReadmeAssets/GameDemo.gif)
