@@ -1,11 +1,23 @@
 # Platformer - Made by Sven Bras 
+
 ## Release V1.1
 
-### features
+### features added
+###### - Speedrun timer.
+###### - Being Able to kill enemies
+
+## Demo
+![gif](/ReadmeAssets/GameDemoV1-3.gif)
+
+## Release V1.1
+
+### features added
 ###### - Self Made sound effects and music. made with a guitar and drums.
 ###### - You can collect coins.
 ###### - Level selector with 4 levels.
-###### - moving platforms.
+###### - Moving platforms.
+###### - Speedrun timer.
+###### - Being Able to kill enemies
 
 ## Demo
 ![gif](/ReadmeAssets/GameDemo.gif)
