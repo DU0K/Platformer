@@ -1,14 +1,17 @@
+using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using System.Collections;
+using static Unity.Burst.Intrinsics.X86.Avx;
 
 public class UiiManagerWinScene : MonoBehaviour
 {
     [SerializeField] private Image bronzeImage;
     [SerializeField] private Image silverImage;
     [SerializeField] private Image goldImage;
+    [SerializeField] private TMP_Text tmp;
     private AudioSource audioSource;
     private Collectables collectables;
     private void Start()
@@ -29,14 +32,16 @@ public class UiiManagerWinScene : MonoBehaviour
         {
             goldImage.color = Color.white;
         }
+
+        tmp.text = SpeedrunTimer.timerMinutes + ":" + SpeedrunTimer.timerSeconds;
     }
 
     private void Update()
     {
         if (Input.anyKeyDown)
         {
+            Finish.finishSceneIsOpen = false;
             StartCoroutine(WaitForSoundSelect());
-            
         }
     }
 

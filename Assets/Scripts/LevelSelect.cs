@@ -20,25 +20,34 @@ public class LevelSelect : MonoBehaviour
         Level3.onClick.AddListener(goToLevel3);
         Level4.onClick.AddListener(goToLevel4);
     }
+    private void Update()
+    {
+        if (Input.anyKeyDown)
+        {
+            Collectables.Bronze = false;
+            Collectables.Silver = false;
+            Collectables.Gold = false;
+        }
+    }
     private void goToLevel1()
     {
         StartCoroutine(WaitForSoundSelect1());
-        
+        SpeedrunTimer.TimerLoop = true;
     }
     private void goToLevel2()
     {
         StartCoroutine(WaitForSoundSelect2());
-        
+        SpeedrunTimer.TimerLoop = true;
     }
     private void goToLevel3()
     {
         StartCoroutine(WaitForSoundSelect3());
-        
+        SpeedrunTimer.TimerLoop = true;
     }
     private void goToLevel4()
     {
         StartCoroutine(WaitForSoundSelect4());
-        
+        SpeedrunTimer.TimerLoop = true;
     }
 
     private IEnumerator WaitForSoundSelect1()

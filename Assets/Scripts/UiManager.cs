@@ -25,6 +25,7 @@ public class UiManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            SpeedrunTimer.TimerLoop = false;
             SceneManager.LoadScene("LevelSelector");
         }
     }

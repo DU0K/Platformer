@@ -24,6 +24,7 @@ public class Damage : MonoBehaviour
     private Movement movement;
     private Rigidbody2D rb;
     private Scene thisScene;
+    private Enemy enemy;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -33,6 +34,7 @@ public class Damage : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         movement = GetComponent<Movement>();
         thisScene = SceneManager.GetActiveScene();
+        enemy = FindFirstObjectByType<Enemy>();
 
         uiManager.UpdateHP(HP);
     }
@@ -64,24 +66,29 @@ public class Damage : MonoBehaviour
         SceneManager.LoadScene(thisScene.name);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") && OnCooldown == false){
+        if (collision.gameObject.CompareTag("Enemy") && OnCooldown == false)
+        {
+            rb.linearVelocityY = DamageJumpForce * movement.speedAndForceMultiplier;
             HP = Mathf.Max(HP - EnemyDamage, MinHP);
             StartCoroutine(WaitForSoundDamage());
             uiManager.UpdateHP(HP);
             StartCoroutine(FlashDamage(0.1f));
             checkForHP();
-            DamageWithCooldown(DamageCooldownSeconds);
+            StartCoroutine(DamageWithCooldown(DamageCooldownSeconds));
+
         }
         else if (collision.gameObject.CompareTag("Spike") && OnCooldown == false)
         {
+            rb.linearVelocityY = DamageJumpForce * movement.speedAndForceMultiplier;
             HP = Mathf.Max(HP - SpikeDamage, MinHP);
             StartCoroutine(WaitForSoundDamage());
             uiManager.UpdateHP(HP);
             StartCoroutine(FlashDamage(0.1f));
             checkForHP();
-            DamageWithCooldown(DamageCooldownSeconds);
+            StartCoroutine(DamageWithCooldown(DamageCooldownSeconds));
+
         }
     }
 

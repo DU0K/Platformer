@@ -245,7 +245,7 @@ GameObject:
   - component: {fileID: 4232806423444363530}
   - component: {fileID: 563322615473250413}
   - component: {fileID: 3385440110465789004}
-  - component: {fileID: 7681557348044258122}
+  - component: {fileID: 4906320324113379085}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -409,9 +409,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Damage
   HP: 100
   DamageJumpForce: 3
-  SpikeDamage: 40
-  EnemyDamage: 25
-  DamageCooldownSeconds: 1
+  SpikeDamage: 25
+  EnemyDamage: 50
+  DamageCooldownSeconds: 0.5
   AudioSourceDamage: {fileID: 4232806423444363530}
   AudioSourceDeath: {fileID: 563322615473250413}
 --- !u!61 &9141944129607141072
@@ -751,7 +751,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!61 &7681557348044258122
+--- !u!61 &4906320324113379085
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -764,7 +764,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -785,7 +785,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.41}
+  m_Offset: {x: -0.04, y: -0.46}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -795,7 +795,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.27, y: 0.19}
+  m_Size: {x: 0.1, y: 0.11}
   m_EdgeRadius: 0
 --- !u!1 &5904578486900881886
 GameObject:

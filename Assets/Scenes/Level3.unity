@@ -601,7 +601,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4199163415266473333, guid: 93b5c9644510a854797d3dcf3deb69df, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.45
+      value: -1.37
       objectReference: {fileID: 0}
     - target: {fileID: 9085424407646711459, guid: 93b5c9644510a854797d3dcf3deb69df, type: 3}
       propertyPath: m_Name
@@ -1030,7 +1030,7 @@ TilemapCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -1044,7 +1044,7 @@ TilemapCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
