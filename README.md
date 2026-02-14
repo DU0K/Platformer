@@ -2,6 +2,18 @@
 
 ## Download my AutoUpdate Launcher here: https://github.com/DU0K/DU0KLauncher/releases
 
+## Release V2.3
+
+### features added
+###### - Release Version Display
+###### - Bugfixes
+
+## Demo
+![img](/ReadmeAssets/GameDemoV2-3.png)
+
+## Release V2.2
+###### Bugfixes
+
 ## Release V2.1
 
 ### features added
