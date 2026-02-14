@@ -12,9 +12,12 @@ public class UiiManagerWinScene : MonoBehaviour
     [SerializeField] private Image silverImage;
     [SerializeField] private Image goldImage;
     [SerializeField] private TMP_Text tmp;
+    [SerializeField] private TMP_Text Level;
+    public static string CurrentLevel;
     private AudioSource audioSource;
     private void Start()
     {
+        Level.text = CurrentLevel;
         audioSource = GetComponent<AudioSource>();
         bronzeImage.color = Color.black;
         silverImage.color = Color.black;

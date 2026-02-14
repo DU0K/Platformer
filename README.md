@@ -2,6 +2,14 @@
 
 ## Download my AutoUpdate Launcher here: https://github.com/DU0K/DU0KLauncher/releases
 
+## Release V2.1
+
+### features added
+###### - CompletedLevel display when finished
+
+## Demo
+![img](/ReadmeAssets/GameDemoV2-1.png)
+
 ## Release V2.0
 
 ### features added

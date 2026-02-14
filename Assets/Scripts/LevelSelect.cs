@@ -33,21 +33,25 @@ public class LevelSelect : MonoBehaviour
     {
         StartCoroutine(WaitForSoundSelect1());
         SpeedrunTimer.TimerLoop = true;
+        UiiManagerWinScene.CurrentLevel = "Level: 1";
     }
     private void goToLevel2()
     {
         StartCoroutine(WaitForSoundSelect2());
         SpeedrunTimer.TimerLoop = true;
+        UiiManagerWinScene.CurrentLevel = "Level: 2";
     }
     private void goToLevel3()
     {
         StartCoroutine(WaitForSoundSelect3());
         SpeedrunTimer.TimerLoop = true;
+        UiiManagerWinScene.CurrentLevel = "Level: 3";
     }
     private void goToLevel4()
     {
         StartCoroutine(WaitForSoundSelect4());
         SpeedrunTimer.TimerLoop = true;
+        UiiManagerWinScene.CurrentLevel = "Level: 4";
     }
 
     private IEnumerator WaitForSoundSelect1()
