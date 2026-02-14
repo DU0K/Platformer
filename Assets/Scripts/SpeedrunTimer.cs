@@ -27,9 +27,14 @@ public class SpeedrunTimer : MonoBehaviour
         if (TimerLoop)
         {
             timer += Time.deltaTime;
-            timerMinutes = Mathf.FloorToInt(timer / 60);
-            timer -= timerMinutes * 60;
             timerSeconds = timer.ToString("00.00").Replace(',', ':');
+
+            if (timer >= 60)
+            {
+                timer = 0;
+                timerMinutes++;
+            }
+
             tmp.text = ($"{timerMinutes:00}:{timerSeconds}");
         }
     }
