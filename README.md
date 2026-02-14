@@ -1,5 +1,14 @@
 # Platformer - Made by Sven Bras 
 
+## Release V2.0
+
+### features added
+###### - A Launcher that automaticly installs/updates the game.
+###### - Bugfixes
+
+## Demo
+![gif](/ReadmeAssets/GameDemoV2-0.mp4)
+
 ## Release V1.3
 
 ### features added
