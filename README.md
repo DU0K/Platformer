@@ -9,7 +9,7 @@
 ###### - Bugfixes
 
 ## Demo
-![gif](/ReadmeAssets/GameDemoV2-0.mp4)
+![gif](/ReadmeAssets/GameDemoV2-0.gif)
 
 ## Release V1.3
 
