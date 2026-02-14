@@ -1,6 +1,6 @@
 # Platformer - Made by Sven Bras 
 
-## Download AutoUpdate Launcher here: https://github.com/DU0K/DU0KLauncher/releases
+## Download my AutoUpdate Launcher here: https://github.com/DU0K/DU0KLauncher/releases
 
 ## Release V2.0
 
