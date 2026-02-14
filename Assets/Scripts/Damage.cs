@@ -19,7 +19,7 @@ public class Damage : MonoBehaviour
     [SerializeField] private AudioSource AudioSourceDeath;
 
     private SpriteRenderer spriterenderer;
-    private BoxCollider2D Collider;
+    private BoxCollider2D []Colliders;
     private UiManager uiManager;
     private Movement movement;
     private Rigidbody2D rb;
@@ -29,7 +29,7 @@ public class Damage : MonoBehaviour
     void Start()
     {
         uiManager = FindFirstObjectByType<UiManager>();
-        Collider = GetComponent<BoxCollider2D>();
+        Colliders = GetComponents<BoxCollider2D>();
         spriterenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         movement = GetComponent<Movement>();
@@ -53,7 +53,10 @@ public class Damage : MonoBehaviour
             Collectables.Silver = false;
             Collectables.Gold = false;
             HP = 0;
-            Collider.enabled = false;
+            for (int i = 0; i < Colliders.Length; i++)
+            {
+                Colliders[i].enabled = false;
+            }
             StartCoroutine(WaitForSoundDeath());
             StartCoroutine(RestartGameInSeconds(2f));
         }

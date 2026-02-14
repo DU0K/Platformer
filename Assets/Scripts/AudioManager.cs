@@ -23,7 +23,15 @@ public class AudioManager : MonoBehaviour
 
     private void SetVolume(float value)
     {
-        PlayerPrefs.SetFloat("SavedMasterVolume", value);
-        audiomixer.SetFloat("MasterVolume", Mathf.Log10((value *= 100) / 100) * 40);
+        if (slider.value == 0)
+        {
+            audiomixer.SetFloat("MasterVolume", -80f);
+            PlayerPrefs.SetFloat("SavedMasterVolume", value);
+        }
+        else
+        {
+            PlayerPrefs.SetFloat("SavedMasterVolume", value);
+            audiomixer.SetFloat("MasterVolume", Mathf.Log10((value *= 100) / 100) * 40);
+        }
     }
 }
