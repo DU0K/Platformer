@@ -6,7 +6,9 @@ using System.Text.RegularExpressions; // Voeg deze toe voor de ID-zoekfunctie
 
 public class DiscordManager : MonoBehaviour
 {
-    public string webhookUrl = "https://discord.com/api/webhooks/1472635784346734623/K2KZ2CHrBBj3UZ2psecX9Mg0yY2R4xXyVOE8bCbLhhqhGN4O375b0vVLh6vm6ZpJhnQr";
+    private string webhookUrl = "https://discord.com/api/webhooks/1472601777445671116/Joe-TVOtJLiSyUxcckQDrm_cB69SQzScKqZhFd4xvAlNcGnMXDCcFqjFvYBlLixSovfP";
+
+    public string gameVersie = "1.0.0"; // Deze kun je nu aanpassen in de Inspector
 
     [System.Serializable]
     private class DiscordMessage { public string content; }
@@ -20,7 +22,8 @@ public class DiscordManager : MonoBehaviour
         string savedId = PlayerPrefs.GetString(playerKey, "");
 
         // De rest van je code blijft hetzelfde...
-        string fullContent = $"**Name:** {Name}\n**Level:** {level}\n**Time:** {message}";
+        string fullContent = $"**Version:** {gameVersie}\n**Name:** {Name}\n**Level:** {level}\n**Time:** {message}";
+
         StartCoroutine(SendToDiscord(Name, level, fullContent, savedId));
     }
 
