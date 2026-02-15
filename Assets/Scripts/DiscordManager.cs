@@ -13,37 +13,57 @@ public class DiscordManager : MonoBehaviour
     [System.Serializable]
     private class DiscordMessage { public string content; }
 
-    public void SendOrUpdate(string Name, string level, string message)
+    public void SendOrUpdate(string Name, string currentLevel, string score)
     {
-        // Maak een unieke sleutel voor de combinatie van naam en level
-        // Bijv: "DiscordID_Jan_Level1" of "DiscordID_Jan_Level2"
-        string playerKey = "DiscordID_" + Name + "_" + level;
+        // STAP 1: Maak de level naam exact gelijk aan wat we verwachten (bv. "Level 1")
+        // Als currentLevel "Level: 1" is, maken we er "Level 1" van.
+        string formattedLevel = currentLevel.Replace(":", "").Trim();
 
-        string savedId = PlayerPrefs.GetString(playerKey, "");
+        // STAP 2: Sla de score op met de opgeschoonde naam
+        PlayerPrefs.SetString($"Score_{Name}_{formattedLevel}", score);
+        PlayerPrefs.Save();
 
-        // De rest van je code blijft hetzelfde...
-        string fullContent = $"**Version:** {gameVersie}\n**Name:** {Name}\n**Level:** {level}\n**Time:** {message}";
+        // STAP 3: Haal alle scores op. Let op dat de namen exact "Level 1", "Level 2" etc. zijn
+        string L1 = PlayerPrefs.GetString($"Score_{Name}_Level 1", "--:--:--");
+        string L2 = PlayerPrefs.GetString($"Score_{Name}_Level 2", "--:--:--");
+        string L3 = PlayerPrefs.GetString($"Score_{Name}_Level 3", "--:--:--");
+        string L4 = PlayerPrefs.GetString($"Score_{Name}_Level 4", "--:--:--");
 
-        StartCoroutine(SendToDiscord(Name, level, fullContent, savedId));
+        // STAP 4: Bouw de tekst
+        string fullContent = $"**Speler:** {Name} (Versie: {gameVersie})\n" +
+                             $"----------------------------\n" +
+                             $"**Level 1:** {L1}\n" +
+                             $"**Level 2:** {L2}\n" +
+                             $"**Level 3:** {L3}\n" +
+                             $"**Level 4:** {L4}\n" +
+                             $"----------------------------";
+
+        string prefsKey = "DiscordMsgID_" + Name;
+        string actualDiscordID = PlayerPrefs.GetString(prefsKey, "");
+
+        StartCoroutine(SendToDiscord(Name, fullContent, actualDiscordID, prefsKey));
     }
 
-    IEnumerator SendToDiscord(string nameKey, string levelKey, string contentText, string existingId)
+    IEnumerator SendToDiscord(string nameKey, string contentText, string existingId, string prefsKey)
     {
         DiscordMessage msg = new DiscordMessage { content = contentText };
         string jsonPayload = JsonUtility.ToJson(msg);
         byte[] bodyRaw = Encoding.UTF8.GetBytes(jsonPayload);
 
         UnityWebRequest request;
-        // Zorg dat de URL ALTIJD eindigt op ?wait=true voor POST
         string baseUrl = webhookUrl.Trim();
         if (baseUrl.Contains("?")) baseUrl = baseUrl.Split('?')[0];
 
+        // DE FIX ZIT HIER:
         if (string.IsNullOrEmpty(existingId))
         {
+            // Nieuw bericht: URL is gewoon de webhook
             request = new UnityWebRequest(baseUrl + "?wait=true", "POST");
         }
         else
         {
+            // Bewerken: URL MOET eindigen op het ID (het getal), NIET op de naam van de PlayerPrefs-sleutel
+            // Gebruik hier 'existingId', NIET 'prefsKey'
             request = new UnityWebRequest($"{baseUrl}/messages/{existingId}", "PATCH");
         }
 
@@ -55,30 +75,24 @@ public class DiscordManager : MonoBehaviour
 
         if (request.result == UnityWebRequest.Result.Success)
         {
-            // Als het een nieuw bericht was (POST), moeten we het ID opslaan
             if (string.IsNullOrEmpty(existingId))
             {
                 string response = request.downloadHandler.text;
                 string newId = ExtractIdWithRegex(response);
-
                 if (!string.IsNullOrEmpty(newId))
                 {
-                    PlayerPrefs.SetString("DiscordID_" + nameKey + "_" + levelKey, newId);
+                    PlayerPrefs.SetString(prefsKey, newId); // Hier slaan we het ID op onder de sleutel
                     PlayerPrefs.Save();
-                    Debug.Log($"<color=green>[Discord] Nieuw bericht voor {nameKey} op {levelKey} opgeslagen!</color>");
+                    Debug.Log("<color=green>ID opgeslagen!</color>");
                 }
-            }
-            else
-            {
-                // Dit was een PATCH (update). Discord stuurt code 200 en de JSON terug.
-                Debug.Log($"<color=cyan>[Discord] Bericht voor {nameKey} op {levelKey} succesvol bijgewerkt!</color>");
             }
         }
         else
         {
-            // Echte fouten (zoals 400, 404, 500)
             Debug.LogError($"[Discord Fout] {request.responseCode} - {request.downloadHandler.text}");
-            if (request.responseCode == 404) PlayerPrefs.DeleteKey("DiscordID_" + nameKey + "_" + levelKey);
+            // Als je een 400 blijft krijgen, komt dat omdat er nog troep in je PlayerPrefs staat.
+            // Wis het dan eenmalig:
+            if (request.responseCode == 400) PlayerPrefs.DeleteKey(prefsKey);
         }
     }
 
