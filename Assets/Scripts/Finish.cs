@@ -1,14 +1,13 @@
-using System.Net;
-using System.Text;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Finish : MonoBehaviour
 {
     [SerializeField] private GameObject Player;
+    [SerializeField] private DiscordManager discordManager;
     public static bool finishSceneIsOpen = false;
     private int currentLevel = LevelSelect.CurrentLevelInt;
+    
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -32,18 +31,8 @@ public class Finish : MonoBehaviour
                 PlayerPrefs.SetFloat("TimeRecordLVL2", SpeedrunTimer.TotalTimeRecord[1]);
                 PlayerPrefs.SetFloat("TimeRecordLVL3", SpeedrunTimer.TotalTimeRecord[2]);
                 PlayerPrefs.SetFloat("TimeRecordLVL4", SpeedrunTimer.TotalTimeRecord[3]);
-                SendMs(NameInputManager.Name ,UiiManagerWinScene.CurrentLevel, ($"{SpeedrunTimer.timerMinutes:00}.{SpeedrunTimer.timerSecondsString}"));
+                discordManager.SendOrUpdate(NameInputManager.Name ,UiiManagerWinScene.CurrentLevel, ($"{SpeedrunTimer.timerMinutes:00}.{SpeedrunTimer.timerSecondsString}"));
             }
         }
-    }
-
-    static void SendMs(string Name, string level, string message)
-    {
-        string webhook = "https://discord.com/api/webhooks/1472601777445671116/Joe-TVOtJLiSyUxcckQDrm_cB69SQzScKqZhFd4xvAlNcGnMXDCcFqjFvYBlLixSovfP";
-
-        WebClient client = new WebClient();
-        client.Headers.Add("Content-Type", "application/json");
-        string payload = "{\"content\": \"" + "UserName: " + Name + ", " + level + ", " + " In: " + message + "\"}";
-        client.UploadData(webhook, Encoding.UTF8.GetBytes(payload));
     }
 }

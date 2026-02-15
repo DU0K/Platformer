@@ -1,7 +1,4 @@
-using System;
-using System.Threading;
 using TMPro;
-using Unity.Mathematics;
 using UnityEngine;
 
 public class SpeedrunTimer : MonoBehaviour

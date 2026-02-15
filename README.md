@@ -1,6 +1,18 @@
 # Platformer - Made by Sven Bras 
 
 ## Download my AutoUpdate Launcher here: https://github.com/DU0K/DU0KLauncher/releases
+## Join the Discord https://discord.gg/H6Cd7pNaud
+
+
+## Release V4.1
+###### Discord Leaderboard update
+
+## Release V4.0
+###### - Discord Leaderboard
+
+## Release V3.0
+###### - GUI update
+
 
 ## Release V2.3
 

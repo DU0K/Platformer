@@ -1,8 +1,4 @@
-using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Audio;
-using UnityEngine.UI;
 
 public class Collectables : MonoBehaviour
 {   
