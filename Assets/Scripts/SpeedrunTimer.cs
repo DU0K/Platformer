@@ -9,9 +9,12 @@ public class SpeedrunTimer : MonoBehaviour
     private TMP_Text tmp;
     private float timer;
 
-
-    public static string timerSeconds;
+    public static float TotalTime;
+    public static float []TotalTimeRecord = new float[4];
+    public static float timerSeconds;
     public static float timerMinutes;
+
+    public static string timerSecondsString;
 
     public static bool TimerLoop = false;
 
@@ -26,8 +29,9 @@ public class SpeedrunTimer : MonoBehaviour
     {
         if (TimerLoop)
         {
+            TotalTime += Time.deltaTime;
             timer += Time.deltaTime;
-            timerSeconds = timer.ToString("00.00").Replace(',', '.');
+            timerSecondsString = timer.ToString("00.00").Replace(',', '.');
 
             if (timer >= 60)
             {
@@ -35,7 +39,7 @@ public class SpeedrunTimer : MonoBehaviour
                 timerMinutes++;
             }
 
-            tmp.text = ($"{timerMinutes:00}.{timerSeconds}");
+            tmp.text = ($"{timerMinutes:00}.{timerSecondsString}");
         }
     }
 }

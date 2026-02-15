@@ -27,6 +27,7 @@ public class UiManager : MonoBehaviour
         {
             SpeedrunTimer.TimerLoop = false;
             SpeedrunTimer.timerMinutes = 0;
+            SpeedrunTimer.TotalTime = 0;
             SceneManager.LoadScene("LevelSelector");
         }
     }

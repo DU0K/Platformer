@@ -35,7 +35,7 @@ public class UiiManagerWinScene : MonoBehaviour
             goldImage.color = Color.white;
         }
 
-        tmp.text = ($"{SpeedrunTimer.timerMinutes:00}:{SpeedrunTimer.timerSeconds}");
+        tmp.text = ($"{SpeedrunTimer.timerMinutes:00}.{SpeedrunTimer.timerSecondsString}");
     }
 
     private void Update()
