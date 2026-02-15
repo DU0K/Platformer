@@ -27,7 +27,7 @@ public class SpeedrunTimer : MonoBehaviour
         if (TimerLoop)
         {
             timer += Time.deltaTime;
-            timerSeconds = timer.ToString("00.00").Replace(',', ':');
+            timerSeconds = timer.ToString("00.00").Replace(',', '.');
 
             if (timer >= 60)
             {
@@ -35,7 +35,7 @@ public class SpeedrunTimer : MonoBehaviour
                 timerMinutes++;
             }
 
-            tmp.text = ($"{timerMinutes:00}:{timerSeconds}");
+            tmp.text = ($"{timerMinutes:00}.{timerSeconds}");
         }
     }
 }

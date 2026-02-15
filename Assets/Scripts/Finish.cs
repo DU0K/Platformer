@@ -21,6 +21,7 @@ public class Finish : MonoBehaviour
             Player.SetActive(false);
             SceneManager.LoadScene("WinScene", LoadSceneMode.Additive);
             SpeedrunTimer.TimerLoop = false;
+            SpeedrunTimer.timerMinutes = 0;
         }
     }
 }
