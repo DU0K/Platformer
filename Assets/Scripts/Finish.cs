@@ -39,7 +39,7 @@ public class Finish : MonoBehaviour
 
     static void SendMs(string Name, string level, string message)
     {
-        string webhook = "https://discord.com/api/webhooks/1472545141070888986/CaW_gKDbjaZXjSVGgoiI9VPeVy-NZoixQjTlHgbLXLO2OjBr8nZI0pdMvfTeRX9gHQmn";
+        string webhook = "https://discord.com/api/webhooks/1472601777445671116/Joe-TVOtJLiSyUxcckQDrm_cB69SQzScKqZhFd4xvAlNcGnMXDCcFqjFvYBlLixSovfP";
 
         WebClient client = new WebClient();
         client.Headers.Add("Content-Type", "application/json");
