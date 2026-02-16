@@ -3,6 +3,12 @@
 ## Download my AutoUpdate Launcher here: https://github.com/DU0K/DU0KLauncher/releases
 ## Join the Discord https://discord.gg/H6Cd7pNaud
 
+## Release V4.3
+###### Discord leaderboard layout update
+###### bugfixes
+
+## Release V4.2
+###### Bugfixes
 
 ## Release V4.1
 ###### Discord Leaderboard update
